@@ -8,6 +8,11 @@ const box7 = document.getElementById(6);
 const box8 = document.getElementById(7);
 const box9 = document.getElementById(8);
 
+const contador = document.getElementById("contador");
+let movimientos = 0;
+
+const restartBtn = document.getElementById("restart-button");
+
 function crearNumerosAleatorios() {
     let array = [];
     for (let i = 0; i < 8; i++) {
@@ -94,7 +99,45 @@ function moverNumero(id) {
     if (chequearMovimientoValido(id, obtenerCajaVacia())) {
         cajaVacia.textContent = box.textContent;
         box.textContent = "";
+
+        movimientos++;
+        actualizarMovimientos();
+
+        if (cheaquearVictoria()) {
+            contador.textContent = `Ganaste con ${movimientos} movimientos! 🎉`;
+        }
     }
 }
+
+function actualizarMovimientos() {
+    contador.textContent = `Movimientos ${movimientos}`;
+}
+
+function cheaquearVictoria() {
+    let contadorDeAciertos = 0;
+
+    for (let i = 0; i < 8; i++) {
+        let box = document.getElementById(i);
+
+        let value = i + 1;
+
+        if (box.textContent === String(value)) {
+            contadorDeAciertos++;
+            console.log("Acierto");
+        }
+    }
+
+    return contadorDeAciertos === 8 ? true : false;
+}
+
+function restartGame() {
+    creadorDeTablaAleatoria();
+
+    box9.textContent = "";
+    movimientos = 0;
+    actualizarMovimientos();
+}
+
+restartBtn.addEventListener("click", restartGame);
 
 creadorDeTablaAleatoria();

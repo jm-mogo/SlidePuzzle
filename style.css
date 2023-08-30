@@ -9,6 +9,12 @@
     padding: 20px;
 }
 
+.contador {
+    font-size: 42px;
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+}
+
 .box {
     background-color: blue;
     border: red solid 1px;
@@ -18,6 +24,19 @@
     align-items: center;
     font-size: 36px;
 }
+
+.buttons {
+    margin: auto;
+    margin-top: 20px;
+    width: 100px;
+}
+
+.buttons button {
+    width: 120px;
+    height: 40px;
+    border-radius: 20px;
+}
+
 
 /* .vacia {
     background-color: aqua;
