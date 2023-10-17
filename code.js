@@ -30,6 +30,7 @@ function creadorDeTablaAleatoria() {
     for (let i = 0; i < 8; i++) {
         let box = document.getElementById(i);
         box.textContent = numerosAleatorios[i];
+        box.classList.remove("vacia");
     }
 }
 
@@ -98,6 +99,8 @@ function moverNumero(id) {
 
     if (chequearMovimientoValido(id, obtenerCajaVacia())) {
         cajaVacia.textContent = box.textContent;
+        cajaVacia.classList.remove("vacia");
+        box.classList.add("vacia");
         box.textContent = "";
 
         movimientos++;
@@ -110,7 +113,7 @@ function moverNumero(id) {
 }
 
 function actualizarMovimientos() {
-    contador.textContent = `Movimientos ${movimientos}`;
+    contador.textContent = `Movimientos: ${movimientos}`;
 }
 
 function cheaquearVictoria() {
@@ -123,7 +126,6 @@ function cheaquearVictoria() {
 
         if (box.textContent === String(value)) {
             contadorDeAciertos++;
-            console.log("Acierto");
         }
     }
 
@@ -134,6 +136,7 @@ function restartGame() {
     creadorDeTablaAleatoria();
 
     box9.textContent = "";
+    box9.classList.add("vacia");
     movimientos = 0;
     actualizarMovimientos();
 }
